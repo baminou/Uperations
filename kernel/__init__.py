@@ -1,8 +1,6 @@
 
-from operations.base import Base
 
 LIBRARIES = {
-    Base.name(): Base()
 }
 
 #EVENTS = {

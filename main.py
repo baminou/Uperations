@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import argparse
-from kernel.console import LIBRARIES
+from kernel import LIBRARIES
 import sys
 
 def main():
