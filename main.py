@@ -2,14 +2,19 @@
 # -*- coding: utf-8 -*-
 
 import argparse
-from kernel import LIBRARIES
+from boot import boot
 import sys
+from uperations.kernel import Kernel
 
 def main():
+    Kernel().get_instance()
+    boot()
+
     parser = argparse.ArgumentParser(description='Create and test re-usable tools')
     subparsers = parser.add_subparsers()
 
-    for library_key, library in LIBRARIES.items():
+
+    for library_key, library in Kernel.get_instance().get_libraries().items():
         library_group = subparsers.add_parser(library_key, description=library.description())
         library_subparsers = library_group.add_subparsers()
 
