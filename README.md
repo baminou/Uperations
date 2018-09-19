@@ -13,19 +13,54 @@ The main components to know are Libraries, Operations and Commands.
 * Library: A group of operations
 * A command to execute in the terminal to run the Operation
 
-### Create a library
+## Installation
+This project uses python3 and was built using python 3.7.0
+```bash
+git clone https://github.com/baminou/Uperations.git
+pip install -r requirements.txt
+```
+
+## Create a library
 The first thing to do is to create a library to contain your operations.
 ```bash
 ./main.py base make:library {LIBRARY_NAME}
 ```
 
-### Add your library to kernel/console.py
+## Register your library to the project
+
+### boot.py
+The boot() function in the file boot.py is the first function that is called once the
+program starts. In this function, the Kernel of the program is initialized. The kernel contains
+the libraries that you need in your project mapped to console command entry point. You can
+add as many libraries as you need in the Kernel.
 ```python
-def libraries():
-    return {
-        ...,
-        library_name: LIBRARY_NAME
-    }
+
+from uperations.kernel import Kernel
+from uperation_base import Base
+from libraries.{YOUR_LIBRARY} import {YOUR_LIBRARY_CLASS}
+
+def boot():
+    Kernel.get_instance().set_libraries({
+        Base.name(): Base(),
+        {YOUR_LIBRARY_CLASS}: {YOUR_LIBRARY_CLASS}()
+    })
+```
+
+### Kernel
+The Kernel is the a singleton that can be accessible in any operations and
+and that is shared in the entire project. 
+```python
+from uperations.kernel import Kernel
+
+...
+kernel = Kernel.get_instance()
+...
+```
+The Kernel contains the libraries registered in the project
+```python
+...
+kernel.get_libraries()
+...
 ```
 
 ### Create an operation
@@ -35,7 +70,7 @@ Once you have a library, you can start adding operations.
 ```
 
 ### Add your operation to the library for access in command line
-1. Open ./operations/{LIBRARY_NAME}/__init__.py
+1. Open ./libraries/{LIBRARY_NAME}/{LIBRARY_NAME}/\__init__.py
 2. Import your operation class at the top of the file.
 ```python
 from .{operation_package} import {OperationClass}
