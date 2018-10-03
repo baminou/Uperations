@@ -2,10 +2,10 @@
 
 ## Uperations
 
-This program helps you create standalone and re-usable tools that can be easily integrated in your workflows.
-The purpose of this project is to create python tools that can be re-used accross different workflow languages.
+This Python framework helps you create command line tools with re-usable and sharable commands.
+View the official documentation at [https://www.uperations.com](https://www.uperations.com).
 
-Some operations are already accessible to help you build your tools.
+[A base library](https://github.com/baminou/Uperations-base) is already registered in this project to help you get started fast.
 
 The main components to know are Libraries, Operations and Commands.
 
