@@ -1,2 +1,2 @@
-uperations_kernel==0.0.6
-uperations_base==0.0.9
+uperations_base==0.0.17
+uperations_kernel==0.0.8
