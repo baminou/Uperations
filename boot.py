@@ -1,10 +1,12 @@
 
 from uperations.kernel import Kernel
 from uperation_base import Base
+from libraries.wegopix.wegopix import wegopix
 
 def boot():
     Kernel.get_instance().set_libraries({
-        Base.name(): Base()
+        Base.name(): Base(),
+        wegopix.name(): wegopix()
     })
 
     Kernel.get_instance().set_observers({
